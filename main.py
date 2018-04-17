@@ -6,12 +6,7 @@ sheet = book.sheet_by_index(0)
 
 data = []
 
-
-def cutit(s, n):
-    return s[n:]
-
-
-for row in range(1, 100):
+for row in range(1, sheet.nrows):
     temp = str(sheet.row_values(row, 0))
 
     data.append(temp[2:-2])
