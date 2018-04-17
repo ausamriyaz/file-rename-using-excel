@@ -1,10 +1,11 @@
+import os
 from xlrd import open_workbook
 
 data = []
 
 
 def appendTolist():
-    book = open_workbook(input('Enter file path with file name and extension: '))
+    book = open_workbook(input('Enter excel file path with file name and extension: '))
 
     sheet = book.sheet_by_index(0)
 
@@ -14,8 +15,14 @@ def appendTolist():
         data.append(temp[2:-2])
 
 
+def renameFiles():
+    os.chdir(input("directory of the files to be renamed: "))
+    all_file_in_dir = (os.listdir(os.getcwd()))
+    i = 0
+    for x in all_file_in_dir:
+        os.rename(x, data[i] + ".txt")
+        i += 1
+
+
 appendTolist()
-
-print(data)
-
-##C:\Users\ausam\Downloads\Untitled spreadsheet.xlsx
+renameFiles()
