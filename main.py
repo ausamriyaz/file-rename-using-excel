@@ -16,13 +16,28 @@ def appendTolist():
 
 
 def renameFiles():
+    count=0
     os.chdir(input("directory of the files to be renamed: "))
     all_file_in_dir = (os.listdir(os.getcwd()))
     i = 0
     for x in all_file_in_dir:
-        os.rename(x, data[i] + ".txt")
-        i += 1
+        if count==0:
+            os.rename(x, data[i] + ".txt")
+            i += 1
+            if len(data)==i:
+                count+=1
+                i=0
+        else:
+            os.rename(x, data[i]+"("+str(count)+")" + ".txt")
+            i += 1
+            if len(data) == i:
+                count += 1
+                i = 0
+
+
+
 
 
 appendTolist()
 renameFiles()
+
